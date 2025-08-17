@@ -1,4 +1,4 @@
-import React from 'react';
+// ProjectList component
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 interface Project {
@@ -15,7 +15,7 @@ interface ProjectListProps {
   onProjectClick: (project: Project) => void;
 }
 
-export default function ProjectList({ title, projects, onProjectClick }: ProjectListProps) {
+export default function ProjectList({ projects, onProjectClick }: ProjectListProps) {
   return (
     <div className="h-screen">
       <div className="grid grid-cols-1 md:grid-cols-2" style={{height: 'calc(100vh - 5rem)', marginTop: '5rem'}}>

@@ -1,4 +1,4 @@
-import React from 'react';
+// Contact component
 import { Instagram, Mail } from 'lucide-react';
 import { images } from '../src/assets/images';
 import { ImageWithFallback } from './figma/ImageWithFallback';

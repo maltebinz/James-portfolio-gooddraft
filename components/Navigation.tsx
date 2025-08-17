@@ -1,4 +1,4 @@
-import React from 'react';
+// Navigation component
 
 type Page = 'home' | 'academic' | 'personal' | 'about' | 'contact' | 'project';
 

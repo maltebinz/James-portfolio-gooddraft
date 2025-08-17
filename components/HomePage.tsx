@@ -1,4 +1,4 @@
-import React from 'react';
+// HomePage component
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { images } from '../src/assets/images';
 

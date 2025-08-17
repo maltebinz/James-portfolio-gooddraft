@@ -1,4 +1,4 @@
-import React from 'react';
+// About component
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { images } from '../src/assets/images';
 import { Download } from 'lucide-react';

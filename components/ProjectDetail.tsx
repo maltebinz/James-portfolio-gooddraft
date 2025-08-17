@@ -1,4 +1,4 @@
-import React from 'react';
+// ProjectDetail component
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { projectGalleries } from '../src/assets/images';
 import { ExpandableText } from './ExpandableText';
@@ -16,7 +16,7 @@ interface ProjectDetailProps {
   onBack: () => void;
 }
 
-export default function ProjectDetail({ project, onBack }: ProjectDetailProps) {
+export default function ProjectDetail({ project }: ProjectDetailProps) {
   // Get gallery images for this specific project
   const galleryImages = (projectGalleries as any)[project.category]?.[project.title]?.gallery || [];
   
