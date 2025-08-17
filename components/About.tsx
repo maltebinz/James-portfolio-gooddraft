@@ -5,7 +5,7 @@ import { Download } from 'lucide-react';
 
 export default function About() {
   return (
-    <div className="h-screen pt-28 bg-white">
+    <div className="h-screen pt-20 md:pt-28 bg-white">
       <div className="h-full">
         <div className="max-w-6xl mx-auto px-6 h-full">
           <div className="grid lg:grid-cols-2 gap-12 h-full items-center">

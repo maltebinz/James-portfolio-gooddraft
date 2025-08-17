@@ -11,11 +11,11 @@ interface HomePageProps {
 export default function HomePage({ onNavigate }: HomePageProps) {
   return (
     <div className="min-h-screen w-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 h-screen w-full">
         {/* Academic Projects Section */}
         <button 
           onClick={() => onNavigate('academic')}
-          className="relative group overflow-hidden bg-gray-100 hover:bg-gray-200 transition-colors duration-300 w-full min-h-screen md:min-h-full"
+          className="relative group overflow-hidden bg-gray-100 hover:bg-gray-200 transition-colors duration-300 w-full h-1/2 md:h-full"
         >
           <div className="absolute inset-0 w-full h-full">
             <ImageWithFallback
@@ -36,7 +36,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         {/* Personal Projects Section */}
         <button 
           onClick={() => onNavigate('personal')}
-          className="relative group overflow-hidden bg-gray-800 hover:bg-gray-900 transition-colors duration-300 w-full min-h-screen md:min-h-full"
+          className="relative group overflow-hidden bg-gray-800 hover:bg-gray-900 transition-colors duration-300 w-full h-1/2 md:h-full"
         >
           <div className="absolute inset-0 w-full h-full">
             <ImageWithFallback

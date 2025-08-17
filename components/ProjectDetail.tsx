@@ -22,7 +22,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
   
   
   return (
-    <div className="min-h-screen pt-36 bg-white">
+    <div className="min-h-screen pt-20 md:pt-36 bg-white">
       <div className="flex flex-col">
         {/* Project Content */}
         <div className="max-w-7xl mx-auto px-6 pb-12">

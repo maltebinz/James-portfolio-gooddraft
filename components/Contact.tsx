@@ -5,9 +5,9 @@ import { ImageWithFallback } from './figma/ImageWithFallback';
 
 export default function Contact() {
   return (
-    <div className="h-screen pt-28 bg-white relative">
+    <div className="h-screen pt-20 md:pt-28 bg-white relative">
       {/* Background Image */}
-      <div className="absolute inset-0 pt-28">
+      <div className="absolute inset-0 pt-20 md:pt-28">
         <ImageWithFallback
           src={images.contactBackground}
           alt="Contact background"

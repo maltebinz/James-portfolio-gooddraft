@@ -19,9 +19,9 @@ export default function Navigation({ currentPage, onNavigate, onBack, canGoBack 
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-black/10">
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-8">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 md:space-x-4">
             {canGoBack && onBack && (
               <button 
                 onClick={onBack}
@@ -37,7 +37,7 @@ export default function Navigation({ currentPage, onNavigate, onBack, canGoBack 
               >
                 <svg 
                   viewBox="0 0 120 32" 
-                  className="w-28 h-8 text-black" 
+                  className="w-20 md:w-28 h-6 md:h-8 text-black" 
                   fill="none" 
                   stroke="currentColor" 
                   strokeWidth="3"
@@ -48,7 +48,7 @@ export default function Navigation({ currentPage, onNavigate, onBack, canGoBack 
             )}
             <button 
               onClick={() => onNavigate('home')}
-              className="text-4xl portfolio-heading hover:opacity-70 transition-opacity text-[36px] uppercase"
+              className="text-2xl md:text-4xl portfolio-heading hover:opacity-70 transition-opacity uppercase"
             >
               James Lu
             </button>
@@ -68,14 +68,14 @@ export default function Navigation({ currentPage, onNavigate, onBack, canGoBack 
             ))}
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu */}
           <div className="md:hidden">
             <div className="space-y-1">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => onNavigate(item.id)}
-                  className={`block w-full text-right hover:opacity-70 transition-opacity ${
+                  className={`block w-full text-right text-sm hover:opacity-70 transition-opacity ${
                     currentPage === item.id ? 'opacity-70' : ''
                   }`}
                 >
