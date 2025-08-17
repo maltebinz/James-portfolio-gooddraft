@@ -17,7 +17,7 @@ interface ProjectListProps {
 
 export default function ProjectList({ title, projects, onProjectClick }: ProjectListProps) {
   return (
-    <div className="h-screen overflow-hidden no-scroll">
+    <div className="h-screen">
       <div className="grid grid-cols-1 md:grid-cols-2" style={{height: 'calc(100vh - 5rem)', marginTop: '5rem'}}>
         {projects.slice(0, 4).map((project) => (
           <button

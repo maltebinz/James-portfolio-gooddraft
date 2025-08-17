@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import { ArrowLeft } from 'lucide-react';
 import { projectGalleries } from '../src/assets/images';
+import { ExpandableText } from './ExpandableText';
 
 interface Project {
   id: string;
@@ -17,20 +17,12 @@ interface ProjectDetailProps {
 }
 
 export default function ProjectDetail({ project, onBack }: ProjectDetailProps) {
+  // Get gallery images for this specific project
+  const galleryImages = (projectGalleries as any)[project.category]?.[project.title]?.gallery || [];
+  
   return (
-    <div className="min-h-screen pt-28 bg-white">
+    <div className="min-h-screen pt-36 bg-white">
       <div className="flex flex-col">
-        {/* Back Button */}
-        <div className="px-6 py-4 flex-shrink-0">
-          <button
-            onClick={onBack}
-            className="flex items-center space-x-2 hover:opacity-70 transition-opacity"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            <span>Back to {project.category} projects</span>
-          </button>
-        </div>
-
         {/* Project Content */}
         <div className="max-w-7xl mx-auto px-6 pb-12">
           <div className="grid lg:grid-cols-2 gap-12">
@@ -43,9 +35,10 @@ export default function ProjectDetail({ project, onBack }: ProjectDetailProps) {
               <div className="w-16 h-0.5 bg-black mb-6" />
               
               <div className="space-y-4">
-                <p className="leading-relaxed">
-                  {project.description}
-                </p>
+                <ExpandableText 
+                  text={project.description}
+                  maxLines={4}
+                />
                 
                 {project.title === 'Light in the Dark' && (
                   <div className="pt-6">
@@ -66,13 +59,15 @@ export default function ProjectDetail({ project, onBack }: ProjectDetailProps) {
                   <div className="pt-6">
                     <h3 className="font-medium mb-3">ASKFATET Design Features</h3>
                     <div className="space-y-2 text-gray-600">
-                      <p>• <span className="font-medium text-black">Carrara marble base</span> with natural veining patterns</p>
-                      <p>• <span className="font-medium text-black">Polished brass accents</span> for refined contrast</p>
-                      <p>• <span className="font-medium text-black">Geometric precision</span> in form and proportions</p>
-                      <p>• <span className="font-medium text-black">Integrated ash collection</span> with easy maintenance</p>
-                      <p>• <span className="font-medium text-black">Sculptural presence</span> when not in use</p>
-                      <p>• <span className="font-medium text-black">Premium material dialogue</span> between stone and metal</p>
-                      <p>• <span className="font-medium text-black">Tactile interaction</span> emphasizing material qualities</p>
+                      <p>• <span className="font-medium text-black">Premium Carrara marble base</span> showcasing unique natural veining patterns</p>
+                      <p>• <span className="font-medium text-black">Precision-machined brass accents</span> with mirror-polished finish</p>
+                      <p>• <span className="font-medium text-black">Geometric precision</span> emphasizing clean lines and proportional harmony</p>
+                      <p>• <span className="font-medium text-black">Integrated ash collection system</span> with concealed removal mechanism</p>
+                      <p>• <span className="font-medium text-black">Sculptural presence</span> serving as functional art when not in use</p>
+                      <p>• <span className="font-medium text-black">Material dialogue</span> exploring the contrast between stone permanence and metal refinement</p>
+                      <p>• <span className="font-medium text-black">Tactile interaction design</span> celebrating the inherent qualities of both materials</p>
+                      <p>• <span className="font-medium text-black">Elevated everyday ritual</span> transforming utility into ceremonial experience</p>
+                      <p>• <span className="font-medium text-black">Contemporary minimalism</span> with timeless material appeal</p>
                     </div>
                   </div>
                 )}
@@ -106,6 +101,23 @@ export default function ProjectDetail({ project, onBack }: ProjectDetailProps) {
                   </div>
                 )}
 
+                {project.title === '2Friends Band' && (
+                  <div className="pt-6">
+                    <h3 className="font-medium mb-3">Band Highlights</h3>
+                    <div className="space-y-2 text-gray-600">
+                      <p>• <span className="font-medium text-black">Five-member lineup</span> from Hässleholm, Sweden</p>
+                      <p>• <span className="font-medium text-black">Indie rock genre</span> with infectious energy and strong stage presence</p>
+                      <p>• <span className="font-medium text-black">Active since 2021</span> with growing popularity among Lund students</p>
+                      <p>• <span className="font-medium text-black">Major festival performances</span> at Torsjö Live and Musik vid Immeln</p>
+                      <p>• <span className="font-medium text-black">Shared stages</span> with ODZ, Daniel Adams-Ray, Molly Hammar, and Dotter</p>
+                      <p>• <span className="font-medium text-black">Idol 2022 connection</span> featuring member Arvid Einarsson</p>
+                      <p>• <span className="font-medium text-black">Debut EP released</span> with debut album planned for spring 2025</p>
+                      <p>• <span className="font-medium text-black">Summer tour planned</span> including a stop in Immeln</p>
+                      <p>• <span className="font-medium text-black">Energetic live shows</span> that make it impossible to sit still</p>
+                    </div>
+                  </div>
+                )}
+
                 {project.title === 'Musikum Company' && (
                   <div className="pt-6">
                     <h3 className="font-medium mb-3">Platform Features</h3>
@@ -130,6 +142,7 @@ export default function ProjectDetail({ project, onBack }: ProjectDetailProps) {
                       project.title === 'Modern Ashtray' ? 'Contemporary Product Design' :
                       project.title === 'Memphis Clock' ? 'Postmodern Design Study' :
                       project.title === 'The Toothbrush' ? 'Ergonomic Product Innovation' :
+                      project.title === '2Friends Band' ? 'Indie Rock Band & Performance' :
                       project.title === 'Musikum Company' ? 'Music Platform & Business Development' :
                       'Design Research'
                     }</p>
@@ -140,7 +153,9 @@ export default function ProjectDetail({ project, onBack }: ProjectDetailProps) {
                     {project.title === 'Modern Ashtray' && (
                       <>
                         <p><span className="font-medium text-black">Focus:</span> Luxury material exploration through functional sculpture</p>
-                        <p><span className="font-medium text-black">Materials:</span> Carrara marble, polished brass</p>
+                        <p><span className="font-medium text-black">Materials:</span> Premium Carrara marble, precision-machined brass</p>
+                        <p><span className="font-medium text-black">Concept:</span> Elevating utilitarian objects through material honesty and craftsmanship</p>
+                        <p><span className="font-medium text-black">Design Philosophy:</span> Celebrating natural beauty in dialogue with refined manufacturing</p>
                       </>
                     )}
                     {project.title === 'Memphis Clock' && (
@@ -150,6 +165,15 @@ export default function ProjectDetail({ project, onBack }: ProjectDetailProps) {
                       <>
                         <p><span className="font-medium text-black">Focus:</span> Utility-driven design for universal compatibility and portability</p>
                         <p><span className="font-medium text-black">Key Features:</span> Lightweight, compact case, sustainable materials</p>
+                      </>
+                    )}
+                    {project.title === '2Friends Band' && (
+                      <>
+                        <p><span className="font-medium text-black">Focus:</span> Creating infectious indie rock with energetic live performances</p>
+                        <p><span className="font-medium text-black">Members:</span> Arvid Einarsson, James Lu, Edvin Jansson, Arvid Pernrup, Dylan Johansson</p>
+                        <p><span className="font-medium text-black">Based in:</span> Hässleholm, Sweden</p>
+                        <p><span className="font-medium text-black">Active Since:</span> 2021</p>
+                        <p><span className="font-medium text-black">Upcoming:</span> Debut album spring 2025, summer tour with Immeln stop</p>
                       </>
                     )}
                     {project.title === 'Musikum Company' && (
@@ -167,9 +191,9 @@ export default function ProjectDetail({ project, onBack }: ProjectDetailProps) {
             {/* Image Gallery - Right Side */}
             <div className="flex flex-col h-full">
               <h3 className="font-medium mb-6 text-lg flex-shrink-0">Project Gallery</h3>
-              <div className="grid grid-cols-2 gap-4 overflow-y-auto max-h-[80vh] pr-4 gallery-scroll" style={{scrollBehavior: 'smooth'}}>
+              <div className="overflow-y-auto max-h-[80vh] pr-4 gallery-scroll" style={{scrollBehavior: 'smooth'}}>
                 {/* Main Image */}
-                <div className="col-span-2">
+                <div className="mb-4">
                   <div className="aspect-square w-full">
                     <ImageWithFallback
                       src={project.image}
@@ -179,95 +203,19 @@ export default function ProjectDetail({ project, onBack }: ProjectDetailProps) {
                   </div>
                 </div>
                 
-                {/* Dynamic Gallery Images */}
-                {projectGalleries[project.category]?.[project.title]?.gallery?.length > 0 ? (
-                  projectGalleries[project.category][project.title].gallery.map((imageSrc, index) => (
-                    <div key={index} className="aspect-square w-full">
-                      <ImageWithFallback
-                        src={imageSrc}
-                        alt={`${project.title} - Gallery ${index + 1}`}
-                        className="w-full h-full object-cover rounded-lg"
-                      />
-                    </div>
-                  ))
-                ) : project.title === 'Musikum Company' ? (
-                  <>
-                    <div className="aspect-square w-full">
-                      <div className="w-full h-full bg-blue-100 rounded-lg flex items-center justify-center">
-                        <span className="text-blue-600 text-sm font-medium">Musikum Test 1</span>
+                {/* Gallery Images */}
+                {galleryImages.length > 0 && (
+                  <div className={`grid gap-4 ${galleryImages.length === 1 ? 'grid-cols-1' : galleryImages.length === 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-2'}`}>
+                    {galleryImages.map((imageSrc: string, index: number) => (
+                      <div key={index} className="aspect-square w-full">
+                        <ImageWithFallback
+                          src={imageSrc}
+                          alt={`${project.title} - Gallery ${index + 1}`}
+                          className="w-full h-full object-cover rounded-lg"
+                        />
                       </div>
-                    </div>
-                    <div className="aspect-square w-full">
-                      <div className="w-full h-full bg-blue-100 rounded-lg flex items-center justify-center">
-                        <span className="text-blue-600 text-sm font-medium">Musikum Test 2</span>
-                      </div>
-                    </div>
-                    <div className="aspect-square w-full">
-                      <div className="w-full h-full bg-blue-100 rounded-lg flex items-center justify-center">
-                        <span className="text-blue-600 text-sm font-medium">Musikum Test 3</span>
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="aspect-square w-full">
-                      <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span className="text-gray-400 text-sm">Debug: {project.title}</span>
-                      </div>
-                    </div>
-                ) : (
-                  <>
-                    <div className="aspect-square w-full">
-                      <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span className="text-gray-400 text-sm">Detail 1</span>
-                      </div>
-                    </div>
-                    <div className="aspect-square w-full">
-                      <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span className="text-gray-400 text-sm">Detail 2</span>
-                      </div>
-                    </div>
-                    <div className="aspect-square w-full">
-                      <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span className="text-gray-400 text-sm">Process</span>
-                      </div>
-                    </div>
-                    <div className="aspect-square w-full">
-                      <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span className="text-gray-400 text-sm">Context</span>
-                      </div>
-                    </div>
-                    <div className="aspect-square w-full">
-                      <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span className="text-gray-400 text-sm">Materials</span>
-                      </div>
-                    </div>
-                    <div className="aspect-square w-full">
-                      <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span className="text-gray-400 text-sm">Finished</span>
-                      </div>
-                    </div>
-                    <div className="aspect-square w-full">
-                      <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span className="text-gray-400 text-sm">Extra 1</span>
-                      </div>
-                    </div>
-                    <div className="aspect-square w-full">
-                      <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span className="text-gray-400 text-sm">Extra 2</span>
-                      </div>
-                    </div>
-                    <div className="aspect-square w-full">
-                      <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span className="text-gray-400 text-sm">Extra 3</span>
-                      </div>
-                    </div>
-                    <div className="aspect-square w-full">
-                      <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span className="text-gray-400 text-sm">Extra 4</span>
-                      </div>
-                    </div>
-                  </>
+                    ))}
+                  </div>
                 )}
               </div>
             </div>

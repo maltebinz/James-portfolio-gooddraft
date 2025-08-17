@@ -6,6 +6,20 @@ A bold and minimalistic portfolio website showcasing academic and personal proje
 
 This portfolio website features a unique split-screen design that immediately presents visitors with two main categories: Academic Projects and Personal Projects. The site prioritizes visual impact through large, full-screen imagery while maintaining exceptional usability and performance.
 
+### Current Projects
+
+**Academic Projects:**
+- **Modern Ashtray (ASKFATET)** - Luxury material exploration combining Carrara marble with precision-machined brass
+- **Light in the Dark (LUNNE-LAMPAN)** - Crisis-ready lamp with 24-hour battery life and solar charging
+- **Memphis Clock** - Postmodern design study applying Memphis movement principles to timepieces
+- **The Toothbrush** - Utility-focused portable design with universal compatibility
+
+**Personal Projects:**
+- **2Friends Band** - Swedish indie rock band from Hässleholm with energetic live performances
+- **Custom Guitar** - Handcrafted musical instrument combining traditional lutherie with contemporary design
+- **Event Organization** - Comprehensive approach to creating memorable experiences
+- **Musikum Company** - Music booking platform co-founded with Vladimir Radulescu
+
 ## ✨ Features
 
 ### Design & User Experience
@@ -20,9 +34,9 @@ This portfolio website features a unique split-screen design that immediately pr
 ### Navigation & Structure
 - **Homepage**: Split-screen layout directing to Academic or Personal projects
 - **Project Lists**: 4 large project cards covering the entire page
-- **Project Details**: Individual project pages with hero image and scrollable gallery
-- **Image Galleries**: Square aspect ratio images in two-column scrollable layout
-- **About Page**: Personal information, resume download, and skills
+- **Project Details**: Individual project pages with detailed features, specifications, and scrollable gallery
+- **Image Galleries**: Square aspect ratio images in two-column scrollable layout with up to 8 images per project
+- **About Page**: Personal information, downloadable resume, and skills showcase
 - **Contact Page**: Contact information and links
 - **Breadcrumb navigation** with "JAMES LU" branding
 
@@ -57,12 +71,24 @@ This portfolio website features a unique split-screen design that immediately pr
 │   └── figma/
 │       └── ImageWithFallback.tsx  # Image component with fallback
 ├── src/assets/images/
-│   ├── index.ts           # Centralized image management
+│   ├── index.ts           # Centralized image management with gallery imports
 │   ├── hero/              # Homepage split-screen images
+│   │   ├── hero-left-lamp.jpg     # Academic side hero
+│   │   └── hero-right-2friend-cap.JPG # Personal side hero
 │   ├── about/             # Profile and resume files
+│   │   ├── About-Headshot.jpg
+│   │   └── About-JamesLu-Resume.pdf
 │   └── projects/          # Organized project image folders
-│       ├── academic/      # Academic project images
-│       └── personal/      # Personal project images
+│       ├── academic/      # Academic project folders
+│       │   ├── modern-ashtray/     # ASKFATET project
+│       │   ├── light-in-the-dark/  # LUNNE-LAMPAN project
+│       │   ├── memphis-clock/      # Memphis design study
+│       │   └── the-toothbrush/     # Portable toothbrush design
+│       └── personal/      # Personal project folders
+│           ├── 2friends-band/      # Swedish indie rock band (8 images)
+│           ├── custom-guitar/      # Handcrafted guitar (6 images)
+│           ├── event-organization/ # Event planning project
+│           └── musikum-company/    # Music booking platform (3 images)
 ├── styles/
 │   └── globals.css        # Global styles and custom scrollbar
 └── README.md             # Project documentation
@@ -144,8 +170,10 @@ Projects are defined in the `mockProjects` array in `App.tsx`. Each project requ
 ### Managing Project Images
 - **Main images**: Stored in `src/assets/images/projects/{category}/{project-name}/main.jpg`
 - **Gallery images**: Additional images in same folder (detail-1.jpg, detail-2.jpg, etc.)
-- **Image imports**: Managed in `src/assets/images/index.ts`
+- **Image imports**: All gallery images imported in `src/assets/images/index.ts`
 - **Gallery display**: Automatically shows in scrollable two-column layout
+- **Current galleries**: 2Friends Band (8 images), Custom Guitar (6 images), Musikum Company (3 images), plus detail images for all academic projects
+- **File formats**: Supports .jpg, .jpeg, .png with exact extension matching required
 
 ### Styling Modifications
 - **Global styles**: Edit `/styles/globals.css`
@@ -185,9 +213,19 @@ The website is static and can be deployed to any hosting service:
 
 This project is for portfolio purposes. Please respect the original design and implementation.
 
-## 👨‍💻 About
+## 👨‍💻 About James Lu
 
-Designed and developed as a showcase of modern web development practices, emphasizing clean design, performance, and user experience. The website demonstrates proficiency in React, TypeScript, and modern CSS techniques.
+James Lu is a 23-year-old Product Design student with a passion for sustainable design, music, and innovative solutions. As a member of the Swedish indie rock band 2Friends and co-founder of Musikum Company, James brings creative energy to both design projects and entrepreneurial ventures.
+
+**Skills & Expertise:**
+- Product Design & CAD Modeling
+- Brand Design & Visual Identity
+- Sustainable Design Principles
+- Music Production & Performance
+- Business Development
+- Languages: Swedish, English, Mandarin
+
+This portfolio demonstrates proficiency in React, TypeScript, and modern web development practices, showcasing both technical skills and creative vision.
 
 ---
 

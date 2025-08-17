@@ -190,7 +190,6 @@ body {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   line-height: 1.5;
-  overflow: hidden;
 }
 
 /* Ensure consistent spacing and typography hierarchy */
@@ -213,11 +212,6 @@ body {
   transform: scale(1.05);
 }
 
-/* Ensure no scrolling on main containers */
-.no-scroll {
-  overflow: hidden;
-  height: 100vh;
-}
 
 /* Wavy text animation for Coming Soon project */
 .wavy-text {
@@ -269,8 +263,106 @@ body {
   background: #a1a1a1;
 }
 
+/* Expandable text component styles */
+.expandable-text-container {
+  position: relative;
+}
+
+.expandable-text-content {
+  overflow: hidden;
+  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.expandable-text-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(transparent, white);
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.expandable-text-fade.hidden {
+  opacity: 0;
+}
+
+/* Responsive typography for expandable text */
+@media (max-width: 768px) {
+  .expandable-text-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 480px) {
+  .expandable-text-content p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+}
+
 /* Firefox scrollbar */
 .gallery-scroll {
   scrollbar-width: thin;
   scrollbar-color: #c1c1c1 #f1f1f1;
+}
+
+/* Back arrow button styles */
+.back-arrow-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  border: 1px solid transparent !important;
+}
+
+.back-arrow-button:hover,
+.back-arrow-button:active,
+.back-arrow-button:focus {
+  background: none !important;
+  border: 1px solid rgba(0, 0, 0, 0) !important;
+  outline: none !important;
+  box-shadow: none !important;
+  opacity: 1;
+}
+
+/* Extended arrow animation enhancement */
+.back-arrow-button svg {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.back-arrow-button:hover svg {
+  transform: translateX(-4px);
+}
+
+/* Responsive back arrow sizing */
+@media (max-width: 768px) {
+  .back-arrow-button {
+    min-width: 100px;
+    min-height: 36px;
+  }
+  
+  .back-arrow-button svg {
+    width: 6rem;
+    height: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .back-arrow-button {
+    min-width: 88px;
+    min-height: 32px;
+  }
+  
+  .back-arrow-button svg {
+    width: 5rem;
+    height: 1.5rem;
+  }
 }
