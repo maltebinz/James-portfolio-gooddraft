@@ -11,7 +11,8 @@ This portfolio website features a unique split-screen design that immediately pr
 ### Design & User Experience
 - **Full-screen split-screen homepage** with 16:9 aspect ratio imagery
 - **Conditional navigation** that appears only on non-home pages
-- **No-scroll design** - all content fits within the viewport
+- **Scrollable project galleries** with two-column layout for multiple images
+- **Custom scrollbar styling** for enhanced visual experience
 - **Hover effects** with smooth transitions and image scaling
 - **Responsive grid layouts** that adapt to different screen sizes
 - **Clean typography** with carefully selected font weights and sizes
@@ -19,8 +20,9 @@ This portfolio website features a unique split-screen design that immediately pr
 ### Navigation & Structure
 - **Homepage**: Split-screen layout directing to Academic or Personal projects
 - **Project Lists**: 4 large project cards covering the entire page
-- **Project Details**: Individual project pages with large image and description
-- **About Page**: Personal information and background
+- **Project Details**: Individual project pages with hero image and scrollable gallery
+- **Image Galleries**: Square aspect ratio images in two-column scrollable layout
+- **About Page**: Personal information, resume download, and skills
 - **Contact Page**: Contact information and links
 - **Breadcrumb navigation** with "JAMES LU" branding
 
@@ -49,13 +51,20 @@ This portfolio website features a unique split-screen design that immediately pr
 │   ├── HomePage.tsx        # Split-screen landing page
 │   ├── Navigation.tsx      # Conditional navigation bar
 │   ├── ProjectList.tsx     # Grid view of projects
-│   ├── ProjectDetail.tsx   # Individual project pages
-│   ├── About.tsx          # About page component
+│   ├── ProjectDetail.tsx   # Individual project pages with galleries
+│   ├── About.tsx          # About page with resume download
 │   ├── Contact.tsx        # Contact page component
 │   └── figma/
 │       └── ImageWithFallback.tsx  # Image component with fallback
+├── src/assets/images/
+│   ├── index.ts           # Centralized image management
+│   ├── hero/              # Homepage split-screen images
+│   ├── about/             # Profile and resume files
+│   └── projects/          # Organized project image folders
+│       ├── academic/      # Academic project images
+│       └── personal/      # Personal project images
 ├── styles/
-│   └── globals.css        # Global styles and CSS variables
+│   └── globals.css        # Global styles and custom scrollbar
 └── README.md             # Project documentation
 ```
 
@@ -128,9 +137,15 @@ The website is designed to work seamlessly across all device sizes:
 Projects are defined in the `mockProjects` array in `App.tsx`. Each project requires:
 - `id`: Unique identifier
 - `title`: Project name
-- `image`: URL to project image
+- `image`: URL to project main image
 - `description`: Detailed project description
 - `category`: Either 'academic' or 'personal'
+
+### Managing Project Images
+- **Main images**: Stored in `src/assets/images/projects/{category}/{project-name}/main.jpg`
+- **Gallery images**: Additional images in same folder (detail-1.jpg, detail-2.jpg, etc.)
+- **Image imports**: Managed in `src/assets/images/index.ts`
+- **Gallery display**: Automatically shows in scrollable two-column layout
 
 ### Styling Modifications
 - **Global styles**: Edit `/styles/globals.css`
