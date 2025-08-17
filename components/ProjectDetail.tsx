@@ -20,6 +20,7 @@ export default function ProjectDetail({ project, onBack }: ProjectDetailProps) {
   // Get gallery images for this specific project
   const galleryImages = (projectGalleries as any)[project.category]?.[project.title]?.gallery || [];
   
+  
   return (
     <div className="min-h-screen pt-36 bg-white">
       <div className="flex flex-col">
@@ -191,9 +192,9 @@ export default function ProjectDetail({ project, onBack }: ProjectDetailProps) {
             {/* Image Gallery - Right Side */}
             <div className="flex flex-col h-full">
               <h3 className="font-medium mb-6 text-lg flex-shrink-0">Project Gallery</h3>
-              <div className="overflow-y-auto max-h-[80vh] pr-4 gallery-scroll" style={{scrollBehavior: 'smooth'}}>
+              <div className="grid grid-cols-2 gap-4 overflow-y-auto max-h-[80vh] pr-4 gallery-scroll" style={{scrollBehavior: 'smooth'}}>
                 {/* Main Image */}
-                <div className="mb-4">
+                <div className="col-span-2">
                   <div className="aspect-square w-full">
                     <ImageWithFallback
                       src={project.image}
@@ -204,19 +205,24 @@ export default function ProjectDetail({ project, onBack }: ProjectDetailProps) {
                 </div>
                 
                 {/* Gallery Images */}
-                {galleryImages.length > 0 && (
-                  <div className={`grid gap-4 ${galleryImages.length === 1 ? 'grid-cols-1' : galleryImages.length === 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-2'}`}>
-                    {galleryImages.map((imageSrc: string, index: number) => (
-                      <div key={index} className="aspect-square w-full">
-                        <ImageWithFallback
-                          src={imageSrc}
-                          alt={`${project.title} - Gallery ${index + 1}`}
-                          className="w-full h-full object-cover rounded-lg"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                )}
+                {galleryImages
+                  .filter((imageSrc: any) => 
+                    imageSrc && 
+                    imageSrc !== undefined && 
+                    imageSrc !== null && 
+                    imageSrc !== '' && 
+                    typeof imageSrc === 'string' &&
+                    imageSrc.length > 0
+                  )
+                  .map((imageSrc: string, index: number) => (
+                    <div key={index} className="aspect-square w-full">
+                      <ImageWithFallback
+                        src={imageSrc}
+                        alt={`${project.title} - Gallery ${index + 1}`}
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                    </div>
+                  ))}
               </div>
             </div>
           </div>

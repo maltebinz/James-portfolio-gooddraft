@@ -34,7 +34,7 @@ import memphisDetail3 from './projects/academic/memphis-clock/detail-3.jpeg'
 
 // The Toothbrush
 import toothbrushDetail1 from './projects/academic/the-toothbrush/detail-1.jpg'
-import toothbrushDetail2 from './projects/academic/the-toothbrush/detail-2.jpg'
+// Note: detail-2.jpg is HEIF format and won't load in browsers
 
 // Personal Project Gallery Images
 // 2Friends Band
@@ -43,15 +43,15 @@ import bandDetail2 from './projects/personal/2friends-band/detail-2.jpeg'
 import bandDetail3 from './projects/personal/2friends-band/detail-3.jpeg'
 import bandDetail4 from './projects/personal/2friends-band/detail-4.jpeg'
 import bandDetail5 from './projects/personal/2friends-band/detail-5.jpeg'
-import bandDetail6 from './projects/personal/2friends-band/detail-6.jpg'
+// Note: detail-6.jpg is HEIF format and won't load in browsers
 import bandDetail7 from './projects/personal/2friends-band/detail-7.jpeg'
-import bandDetail8 from './projects/personal/2friends-band/detail-8.jpg'
+// Note: detail-8.jpg is HEIF format and won't load in browsers
 
 // Custom Guitar
 import guitarDetail1 from './projects/personal/custom-guitar/detail-1.jpg'
 import guitarDetail2 from './projects/personal/custom-guitar/detail-2.jpeg'
 import guitarDetail3 from './projects/personal/custom-guitar/detail-3.jpeg'
-import guitarDetail4 from './projects/personal/custom-guitar/detail-4.jpg'
+// Note: detail-4.jpg is HEIF format and won't load in browsers
 import guitarDetail5 from './projects/personal/custom-guitar/detail-5.jpeg'
 import guitarDetail6 from './projects/personal/custom-guitar/detail-6.jpeg'
 
@@ -113,7 +113,7 @@ export const projectGalleries = {
     },
     'The Toothbrush': {
       main: academic4Img,
-      gallery: [toothbrushDetail1, toothbrushDetail2]
+      gallery: [toothbrushDetail1]
     }
   },
   personal: {
@@ -123,11 +123,11 @@ export const projectGalleries = {
     },
     'Custom Guitar': {
       main: personal2Img,
-      gallery: [guitarDetail1, guitarDetail2, guitarDetail3, guitarDetail4, guitarDetail5, guitarDetail6]
+      gallery: [guitarDetail1, guitarDetail2, guitarDetail3, guitarDetail5, guitarDetail6]
     },
     '2Friends Band': {
       main: personal3Img,
-      gallery: [bandDetail1, bandDetail2, bandDetail3, bandDetail4, bandDetail5, bandDetail6, bandDetail7, bandDetail8]
+      gallery: [bandDetail1, bandDetail2, bandDetail3, bandDetail4, bandDetail5, bandDetail7]
     },
     'Musikum Company': {
       main: personal4Img,
