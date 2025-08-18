@@ -17,8 +17,8 @@ interface ProjectListProps {
 
 export default function ProjectList({ projects, onProjectClick }: ProjectListProps) {
   return (
-    <div className="h-screen">
-      <div className="grid grid-cols-1 md:grid-cols-2 h-[calc(100vh-3rem)] md:h-[calc(100vh-5rem)] mt-12 md:mt-20">
+    <div className="min-h-screen pt-28 md:pt-28">
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[calc(100vh-5rem)] md:h-[calc(100vh-5rem)]">
         {projects.slice(0, 4).map((project) => (
           <button
             key={project.id}
